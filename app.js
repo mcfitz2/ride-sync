@@ -29,7 +29,7 @@ db
 		require("./app/controllers/"+ file)(app);
 	    }
 	});
-	http.createServer(app).listen(30005, function(){
+	http.createServer(app).listen(app.get("port"), function(){
 	    console.log('Express server listening on port ' + app.get('port'));
 	});	
     });
