@@ -2,11 +2,7 @@ var fs        = require('fs')
 , path      = require('path')
 , Sequelize = require('sequelize')
 , lodash    = require('lodash')
-, sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASS, {
-    dialect: 'postgres',
-    port: process.env.DB_PORT,
-//    logging:false
-})
+, sequelize = new Sequelize(process.env.DATABASE_URL, {native:true, ssl:true})
 , db        = {};
  
 fs
