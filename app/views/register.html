@@ -1,0 +1,30 @@
+{{#start}}
+<div class="row">
+  <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4"></div>
+  <div class="col-md-4 col-sm-4 col-lg-4 col-xs-4 well">
+    <h3 style="display:inline">Create an Account</h3> or <a href="/login">login</a>
+    <form id="register" role="form" method="POST">
+      <div class="form-group">
+	<label for="username">Username</label>
+	<input name="username" class="form-control" type="text" placeholder="Enter username">
+      </div>
+      <div class="form-group">
+	<label for="email">Email Address</label>
+	<input name="email" class="form-control" type="text" placeholder="Enter email address">
+      </div>
+      <div class="form-group">
+	<label for="p1">Password</label>
+	<input id="p1" name="password" type="password" class="form-control" placeholder="Password">
+	<input id="p2" name="password_confirm" type="password" class="form-control" placeholder="Retype Password">
+      </div>
+      <button type="submit" name="Login" class="btn btn-default">Sign In</button>
+    </form>
+  </div>
+</div>
+{{/start}}
+{{#moves}}
+<a href="/auth/moves">Authorize Moves</a>
+{{/moves}}
+{{#strava}}
+<a href="/auth/strava">Authorize Strava</a>
+{{/strava}}

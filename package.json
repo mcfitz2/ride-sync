@@ -1,0 +1,34 @@
+{
+  "name": "ride-sync",
+  "version": "0.0.1",
+  "description": "Collect all your internet data",
+  "main": "app.js",
+  "dependencies": {
+      "moves": "git+https://github.com/mcfitz2/node-moves.git",
+      "passport-strava": "git+https://github.com/mcfitz2/passport-strava.git",
+      "strava": "git+https://github.com/mcfitz2/node-strava.git",
+      "passport-moves": "git+https://github.com/mcfitz2/passport-moves.git",
+      "bcrypt": "~0.7.7",
+      "express": "~3.8.0",
+      "passport": "~0.2.0",
+      "passport-local": "~1.0.0",
+      "passport-local-sequelize": "git+https://github.com/jgable/passport-local-sequelize.git",
+      "gpx-gen":"git+https://github.com/mcfitz2/node-gpx-gen.git",
+      "connect-session-sequelize": "0.0.5",
+      "crudify": "~0.2.0",
+      "hogan-express": "~0.5.2",
+      "passport-http": "latest",
+      "passport-http-bearer": "latest",
+      "passport-oauth2-client-password": "latest",
+      "async": "~0.9.0",
+      "sequelize": "~1.7.5",
+      "pg": "~3.2.0",
+      "moment": "~2.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Micah Fitzgerald",
+  "license": "BSD-2-Clause"
+}
