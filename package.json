@@ -4,6 +4,7 @@
   "description": "Collect all your internet data",
   "main": "app.js",
   "dependencies": {
+      "hjs": "*",
       "moves": "git+https://github.com/mcfitz2/node-moves.git",
       "passport-strava": "git+https://github.com/mcfitz2/passport-strava.git",
       "strava": "git+https://github.com/mcfitz2/node-strava.git",
@@ -18,12 +19,11 @@
       "crudify": "~0.2.0",
       "hogan-express": "~0.5.2",
       "passport-http": "latest",
-      "passport-http-bearer": "latest",
-      "passport-oauth2-client-password": "latest",
       "async": "~0.9.0",
       "sequelize": "~1.7.5",
       "pg": "~3.2.0",
-      "moment": "~2.6.0"
+      "moment": "~2.6.0",
+      "nodemon":"1.2.x"
   },
   "devDependencies": {},
   "scripts": {
