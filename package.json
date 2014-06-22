@@ -1,6 +1,6 @@
 {
   "name": "ride-sync",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Collect all your internet data",
   "main": "app.js",
   "dependencies": {
@@ -18,7 +18,6 @@
     "connect-session-sequelize": "0.0.5",
     "crudify": "~0.2.0",
     "hogan-express": "~0.5.2",
-    "passport-http": "latest",
     "async": "~0.9.0",
     "sequelize": "~1.7.5",
     "pg": "~3.2.0",
@@ -31,5 +30,16 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Micah Fitzgerald",
-  "license": "BSD-2-Clause"
+  "license": "GPLv2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mcfitz2/ride-sync.git"
+  },
+  "keywords": [
+    "strava",
+    "moves"
+  ],
+  "bugs": {
+    "url": "https://github.com/mcfitz2/ride-sync/issues"
+  }
 }
