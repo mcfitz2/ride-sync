@@ -1,5 +1,8 @@
 var passportLocalSequelize = require('passport-local-sequelize');
 var crypto = require("crypto");
+var moment = require("moment");
+var Strava = require("strava");
+var Moves = require("moves");
 var User = function(sequelize, DataTypes) {
     var User = sequelize.define('User', {
 	username: DataTypes.STRING,
@@ -14,16 +17,26 @@ var User = function(sequelize, DataTypes) {
     }, {
 	classMethods: {
 	    associate: function(models) {
-	    }
-	}, 
-	hooks: {
-	    beforeCreate: function(user, fn) {
-
+		User.hasMany(models.Ride);
 	    }
 	}, 
 	instanceMethods: {
+	    getMoves:function() {
+		return new Moves({
+		    client_id:    process.env.MOVES_CLIENT_ID,
+		    client_secret: process.env.MOVES_CLIENT_SECRET,
+		    access_token: this.moves_access_token,
+		});
+	    },
+	    getStrava:function() {
+		return new Strava({
+		    client_id: process.env.STRAVA_CLIENT_ID,
+		    client_secret: process.STRAVA_CLIENT_SECRET,
+		    redirect_uri: process.STRAVA_CALLBACK_URL,
+		    access_token: this.strava_access_token,
+		});
+	    },
 	    import:require("../../lib/import"),
-	    onUpdate:require("../../lib/import"),
 	}
     });
     passportLocalSequelize(User);

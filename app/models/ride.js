@@ -1,3 +1,4 @@
+
 var Ride = function(sequelize, DataTypes) {
     var Ride = sequelize.define('Ride', {	
 	day:{
@@ -8,14 +9,27 @@ var Ride = function(sequelize, DataTypes) {
 	    }
 	},
 	activity_id:DataTypes.INTEGER,
+	distance:DataTypes.DECIMAL,
+	name:DataTypes.STRING,
+	moving_time:DataTypes.BIGINT,
     }, {
-	classMethods: {
-	    associate: function(models) {
-		Ride.hasMany(models.User);
-		models.User.belongsTo(Ride);
-	    }
-	}, 
 	hooks: {
+	    beforeCreate:function(ride, fn) {
+		var db = require("../models");
+		if (ride.UserId && ride.activity_id) {
+		    db.User.find(ride.UserId).done(function(err, user) {
+			var strava = user.getStrava();
+			strava.activities.get(ride.activity_id, function(err, activity) {
+			    ride.distance = activity.distance;
+			    ride.moving_time = activity.moving_time;
+			    ride.name = activity.name;
+			    fn(err, ride);
+			});
+		    });
+		} else {
+		    fn(null, ride);
+		}
+	    }
 	}
     });
     return Ride;

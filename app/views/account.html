@@ -1,8 +1,14 @@
 {{#user}}
-<p>Username: {{username}}</p>
-<p>Email: {{email}}</p>
-{{json}}
-{{/user}}
-{{^user}}
-Somehow, you're not logged in! <a href="/login">Log in here!</a>
+<p>Welcome, {{username}}!</p>
+<h3>Recent Submitted Rides</h3>
+<div>
+<ul>
+{{#rides}}
+<li><a href="http://app.strava.com/activities/{{activity_id}}">{{day}}</a></li>
+{{/rides}}
+</ul>
+{{^rides}}
+<p> Could not fetch rides</p>
+{{/rides}}
+</div>
 {{/user}}
