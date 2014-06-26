@@ -1,11 +1,23 @@
+<script>
+$(function() {
+$(".refetch-button").click(function() {
+var self = $(this);
+self.html("...");
+$.post("/refetch/"+self.data("day"), function(data) {
+self.html("Refetch");
+});
+});
+});
+</script>
 <div>
-<table class="table table-striped table-condensed">
+<table id="rides-table" class="table table-striped table-condensed" vertical-align="middle">
 <tr>
 
   <th>Date</th>
   <th>Name</th>
   <th>Distance</th>
   <th>Time</th>
+  <th></th>
   <th></th>
 </tr>
 {{#rides}}
@@ -14,7 +26,8 @@
   <td>{{name}}</td>
   <td>{{distance}}</td>
   <td>{{time}}</td>
-  <td><a href="http://app.strava.com/activities/{{activity_id}}">View on Strava</a></td>
+  <td><a class="btn btn-mini btn-primary" href="http://app.strava.com/activities/{{activity_id}}">View on Strava</a></td>
+  <td><a data-day="{{day}}" class="btn btn-mini btn-primary refetch-button">Refetch</a></td> 
 </tr>
 {{/rides}}
 </table>

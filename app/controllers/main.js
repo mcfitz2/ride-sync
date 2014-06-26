@@ -30,6 +30,17 @@ module.exports = function(app) {
 	res.locals.user = req.user;
 	res.redirect('/account');
     });
+    app.post("/refetch/:day", isAuthenticated, function(req, res) {
+	db.Ride.find({where:{day:req.params.day, UserId:req.user.id}}).done(function(err, ride) {
+	    ride.refetch(function(err) {
+		if (err) {
+		    res.send(500);
+		} else {
+		    res.send(200);
+		}
+	    });
+	});
+    });
     app.get("/rides", isAuthenticated, function(req, res) {
 	db.Ride.findAll({
 	    where:{

@@ -2,7 +2,7 @@ var fs        = require('fs')
 , path      = require('path')
 , Sequelize = require('sequelize')
 , lodash    = require('lodash')
-, sequelize = new Sequelize(process.env.DATABASE_URL, {native:true, ssl:true, logging:false})
+, sequelize = new Sequelize(process.env.DATABASE_URL, {native:true, ssl:true, logging:true})
 , db        = {};
  
 fs

@@ -1,4 +1,6 @@
-
+#rides-table td {
+    vertical-align:middle;
+}
 .right {
   text-align: right;
   margin-right: 1em;
