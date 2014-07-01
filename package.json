@@ -6,7 +6,9 @@
   "dependencies": {
     "hjs": "*",
     "moves": "git+https://github.com/mcfitz2/node-moves.git",
+    "prowljs": "git+https://github.com/mcfitz2/node-prowl.git",
     "passport-strava": "git+https://github.com/mcfitz2/passport-strava.git",
+      "passport-prowl": "git+https://github.com/mcfitz2/passport-prowl.git",
     "strava": "git+https://github.com/mcfitz2/node-strava.git",
     "passport-moves": "git+https://github.com/mcfitz2/passport-moves.git",
     "bcrypt": "~0.7.7",

@@ -1,12 +1,13 @@
 var db = require("../models")
 , MovesStrategy = require('passport-moves').Strategy
-, StravaStrategy = require('passport-strava').Strategy;
+, StravaStrategy = require('passport-strava').Strategy
+, ProwlStrategy = require('passport-prowl').Strategy;
+
 function callback(req, accessToken, refreshToken, profile, done) {
-    console.log(profile);
     var attrs = {};
     attrs[profile.provider+"_id"] = profile.id;
     attrs[profile.provider+"_access_token"] = accessToken;
-
+    
     req.user.updateAttributes(attrs).done(function(err, user) {
 	console.log(err);
 	done(err, user);
@@ -27,6 +28,12 @@ module.exports = function (app) {
     app.passport.use(new StravaStrategy({
 	clientID: process.env.STRAVA_CLIENT_ID,
 	clientSecret: process.env.STRAVA_CLIENT_SECRET,
+	callbackURL: process.env.STRAVA_CALLBACK_URL,
+	passReqToCallback:true
+    }, callback));
+    app.passport.use(new ProwlStrategy({
+	providerKey: process.env.PROWL_PROVIDER_KEY,
+	authorizationURL:"none",
 	callbackURL: process.env.STRAVA_CALLBACK_URL,
 	passReqToCallback:true
     }, callback));

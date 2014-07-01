@@ -26,9 +26,12 @@ function toHMS(seconds) {
     return string;
 }
 module.exports = function(app) {
+    app.get("/settings", isAuthenticated, function(req, res) {
+	res.render("settings");
+    });
     app.get('/', isAuthenticated, function(req, res){
 	res.locals.user = req.user;
-	res.redirect('/account');
+	res.redirect('/home');
     });
     app.post("/refetch/:day", isAuthenticated, function(req, res) {
 	db.Ride.find({where:{day:req.params.day, UserId:req.user.id}}).done(function(err, ride) {
@@ -58,7 +61,7 @@ module.exports = function(app) {
 	    res.render('rides');
 	});
     });
-    app.get('/account', isAuthenticated, function(req, res){
+    app.get('/home', isAuthenticated, function(req, res){
 	db.Ride.findAll({
 	    where:{
 		createdAt:{
@@ -74,7 +77,7 @@ module.exports = function(app) {
 	    } else {
 		res.locals.rides_error = "Could not fetch recent rides";
 	    }
-	    res.render('account');
+	    res.render('home');
 	});
     });
 };
