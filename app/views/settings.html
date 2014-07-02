@@ -2,13 +2,23 @@
 <h2>Settings</h2>
 <h3>Account</h3>
 <ul class="list list-unstyled">
-  <li><input type="checkbox">Enable RideSync</li>
+  {{#user.prowl_enabled}}
+  <li><input checked="true", type="checkbox">Enable Prowl Notifications</li>
+  {{/user.prowl_enabled}}
+  {{^user.prowl_enabled}}
   <li><input type="checkbox">Enable Prowl Notifications</li>
+  {{/user.prowl_enabled}}
+  {{#user.fetch_enabled}}
+  <li><input checked="true" type="checkbox">Enable RideSync</li>
+  {{/user.fetch_enabled}}
+  {{^user.fetch_enabled}}
+  <li><input type="checkbox">Enable RideSync</li>
+  {{/user.fetch_enabled}}
 </ul>
 <h3>Connect Services</h3>
-<ul class="list list-unstyled">
-<li><img src="">Moves</li>
-<li>Strava</li>
-<li>Prowl</li>
+<ul class="list list-inline list-unstyled">
+<li><a href="/auth/moves"><img alt="Moves (moves-app.com)" src="/public/img/moves.png" width="50px" height="50px"></a></li>
+<li><a href="/auth/strava"><img alt="Strava (strava.com)" src="/public/img/strava.png" width="50px" height="50px"></a></li>
+<li><a href="/auth/prowl"><img alt="Prowl (prowlapp.com)" src="/public/img/prowl.png" width="50px" height="50px"></a></li>
 </ul>
 </form>
