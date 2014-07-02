@@ -40,7 +40,16 @@ module.exports = function(app) {
 	    app.passport.authorize(
 		'moves',
 		{
-		    scope: "location activity"
+		    scope: "location activity",
+		    callbackURL:"/auth/moves/callback"
+		})
+	   );
+    app.get('/register/moves', app.isAuthenticated, 
+	    app.passport.authorize(
+		'moves',
+		{
+		    scope: "location activity",
+		    callbackURL:"/register/moves/callback"
 		})
 	   );
     app.get('/auth/prowl', app.isAuthenticated, prowl.middleware());
@@ -54,27 +63,39 @@ module.exports = function(app) {
     app.get('/auth/moves/callback', app.isAuthenticated,
 	    app.passport.authorize('moves', { failureRedirect: '/' }),
 	    function(req, res) {
+		res.redirect('/settings');
+	    });
+    app.get('/register/moves/callback', app.isAuthenticated,
+	    app.passport.authorize('moves', { failureRedirect: '/' }),
+	    function(req, res) {
 		res.redirect('/register/strava');
 	    });
     app.get('/auth/strava', app.isAuthenticated, 
 	    app.passport.authorize(
 		'strava',
 		{
-		    scope: "view_private write"
+		    scope: "view_private write",
+		    callbackURL:"/auth/strava/callback"
+		})
+	   );
+    app.get('/register/strava', app.isAuthenticated, 
+	    app.passport.authorize(
+		'strava',
+		{
+		    scope: "view_private write",
+		    callbackURL:"/register/strava/callback"
 		})
 	   );
     
     app.get('/auth/strava/callback', app.isAuthenticated, 
-	    app.passport.authorize('strava', { failureRedirect: '/' }),
+	    app.passport.authorize('strava', { failureRedirect: '/settings' }),
 	    function(req, res) {
-		res.redirect('/account');
+		
+		res.redirect('/settings');
 	    });
-    app.get("/register/moves", function(req, res) {
-	res.locals.moves = true;
-	res.render("register");
-    });
-    app.get("/register/strava", function(req, res) {
-	res.locals.strava = true;
-	res.render("register");
-    });
+    app.get('/register/strava/callback', app.isAuthenticated, 
+	    app.passport.authorize('strava', { failureRedirect: '/register/strava' }),
+	    function(req, res) {
+		res.redirect('/home');
+	    });
 };

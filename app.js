@@ -1,3 +1,17 @@
+if (process.env.MODE == "development") {
+    Object.keys(process.env).forEach(function(key) {
+	if (key.indexOf("DEV") == key.length-3) {
+	    process.env[key.substring(0, key.length-4)] = process.env[key];
+	}
+    });
+} else if (process.env.MODE == "production") {
+    Object.keys(process.env).forEach(function(key) {
+	if (key.indexOf("PRO") == key.length-3) {
+	    process.env[key.substring(0, key.length-4)] = process.env[key];
+	}
+    });
+}
+console.log(process.env);
 var express = require("express");
 var app = express();
 var http = require("http");
@@ -7,7 +21,8 @@ var passport = require("passport");
 app.passport = passport;
 var models_dir = __dirname + '/app/models';
 var db = require(models_dir);
-console.log(process.argv);
+
+
 db
     .sequelize
     .sync({force: process.argv[2] == "sync"})
