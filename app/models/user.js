@@ -13,9 +13,10 @@ var User = function(sequelize, DataTypes) {
 	moves_access_token:DataTypes.STRING,
 	strava_id: DataTypes.INTEGER,
 	moves_id: DataTypes.BIGINT,
-//	last_fetch:DataTypes.DATE,
 	prowl_api_key:DataTypes.STRING,
-//	prowl_token:DataTypes.STRING
+	prowl_enabled:DataTypes.BOOLEAN,
+	fetch_enabled:DataTypes.BOOLEAN,
+	
     }, {
 	classMethods: {
 	    associate: function(models) {
