@@ -1,15 +1,15 @@
 var express = require("express");
 //var crudify = require("crudify");
 var SequelizeStore = require('connect-session-sequelize')(express);
+var exphbs  = require('express3-handlebars');
 module.exports = function(app) {
     console.log("Configuring Express");
     console.log(__dirname);
     app.use(express.errorHandler({ showStack: true, dumpExceptions: true }));
     app.set('port', process.env.PORT || 30005);
-    app.set('views', __dirname+'/../views');
-    app.set('view engine', 'html');
-    app.engine('html', require("hogan-express"));
-    app.set('layout', 'layout');
+    app.set('views', __dirname+'/../../views');
+    app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+    app.set('view engine', 'handlebars');
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.cookieParser());
@@ -37,6 +37,7 @@ module.exports = function(app) {
 	if (!req.user || !req.user.id) {
             return res.redirect('/login');
 	}
+	res.locals.user = req.user;
 	next();
     };
 };

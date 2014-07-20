@@ -1,0 +1,18 @@
+<h3>Display</h3>
+<form method="POST" class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-3 control-label">Units</label>
+    <div class="col-sm-9">
+      <select class="form-control">
+	{{#if user.useMetric }}
+	<option selected="true" name="metric">Kilograms and Kilometers</option>
+	<option name="imperial">Pounds and Miles</option>
+	{{else}}
+	<option name="metric">Kilograms and Kilometers</option>
+	<option selected="true" name="imperial">Pounds and Miles</option>
+	{{/if }}	
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="pull-right btn btn-default">Save</button>
+</form>

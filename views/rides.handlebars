@@ -10,9 +10,19 @@ self.html("Refetch");
 });
 </script>
 <div>
-<table id="rides-table" class="table table-striped table-condensed" vertical-align="middle">
-<tr>
+  <h3>Stats</h3>
+  <hr class="dark">
+  <table>
 
+    <tr><td width="125px"><strong>Total Rides: </strong></td><td>{{total_rides}}</td></tr>
+    <tr><td><strong>Total Distance: </strong></td><td>{{total_distance}}</td></tr>
+    <tr><td><strong>Total Time: </strong></td><td>{{total_time}}</td></tr>
+  </table>
+  <h3>Rides</h3>
+  <hr class="dark">
+  <table id="rides-table" class="table table-striped table-condensed" vertical-align="middle">
+    <tbody>
+  <tr>
   <th>Date</th>
   <th>Name</th>
   <th>Distance</th>
@@ -30,8 +40,21 @@ self.html("Refetch");
   <td><a data-day="{{day}}" class="btn btn-mini btn-primary refetch-button">Refetch</a></td> 
 </tr>
 {{/rides}}
+</tbody>
 </table>
 {{^rides}}
+<script>
+$(function() {
+$("#import").click(function() {
+var self = $(this);
+self.html("...");
+$.post("/refetch/", function(data) {
+self.html("Import Rides");
+});
+});
+});
+</script>
 <p> Could not fetch rides</p>
+<a id="import">Import Rides</a>
 {{/rides}}
 </div>

@@ -11,7 +11,11 @@ function ensureLoggedIn() {
 module.exports = function(app) {
     var prowl = new Prowl(process.env.PROWL_PROVIDER_KEY);
     app.get('/login', function(req, res){
-	res.render('login');
+	if (req.user) {
+	    res.redirect("/home");
+	} else {
+	    res.render('login');
+	}
     });
     app.get("/register", function(req, res) {
 	res.locals.start = true;

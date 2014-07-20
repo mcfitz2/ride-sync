@@ -1,0 +1,41 @@
+<h3>Connect Services</h3>
+<ul class="list list-inline list-unstyled">
+  <li>
+    <a href="/auth/moves">
+      <div class="icon-container">
+	<img class="overlayed" src="/public/img/moves.png">
+	{{#if user.moves_id}}
+	<span class="overlay ok glyphicon glyphicon-ok-circle"></span>
+	{{else}}
+	<span class="overlay error glyphicon glyphicon-remove-circle"></span>
+	{{/if}}
+	
+	
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="/auth/strava">
+      <div class="icon-container">
+	<img class="overlayed" src="/public/img/strava.png">
+	{{#if user.strava_id}}
+	<span class="overlay ok glyphicon glyphicon-ok-circle"></span>
+	{{else}}
+	<span class="overlay error glyphicon glyphicon-remove-circle"></span>
+	{{/if}}
+      </div>
+    </a>
+  </li>
+  <li>
+    <a href="/auth/prowl">
+      <div class="icon-container">
+	<img class="overlayed" src="/public/img/prowl.png">
+	{{#if user.prowl_api_key}}
+	<span class="overlay ok glyphicon glyphicon-ok-circle"></span>
+	{{else}}
+	<span class="overlay error glyphicon glyphicon-remove-circle"></span>
+	{{/if}}
+      </div>
+    </a>
+  </li>
+</ul>

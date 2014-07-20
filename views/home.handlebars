@@ -1,14 +1,16 @@
-{{#user}}
-<p>Welcome, {{username}}!</p>
+{{#if user}}
+<p>Welcome, {{user.username}}!</p>
 <h3>Recent Submitted Rides</h3>
 <div>
+{{#if rides}}
 <ul>
-{{#rides}}
+{{#each rides}}
 <li><a href="http://app.strava.com/activities/{{activity_id}}">{{day}}</a></li>
-{{/rides}}
+{{/each}}
 </ul>
-{{^rides}}
+{{else}}
 <p> Could not fetch rides</p>
-{{/rides}}
+{{/if}}
 </div>
-{{/user}}
+
+{{/if}}

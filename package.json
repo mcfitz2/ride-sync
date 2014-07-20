@@ -5,7 +5,6 @@
   "description": "Collect all your internet data",
   "main": "app.js",
   "dependencies": {
-    "hjs": "*",
     "moves": "git+https://github.com/mcfitz2/node-moves.git",
     "prowljs": "git+https://github.com/mcfitz2/node-prowl.git",
     "passport-strava": "git+https://github.com/mcfitz2/passport-strava.git",

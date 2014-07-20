@@ -11,7 +11,7 @@ var Ride = function(sequelize, DataTypes) {
 	activity_id:DataTypes.INTEGER,
 	distance:DataTypes.DECIMAL,
 	name:DataTypes.STRING,
-	moving_time:DataTypes.BIGINT,
+	moving_time:DataTypes.INTEGER,
     }, {
 	hooks: {
 	    beforeCreate:function(ride, fn) {
